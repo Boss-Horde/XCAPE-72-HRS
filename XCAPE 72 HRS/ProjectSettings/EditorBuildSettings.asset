@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/ProjectScenes/MenuScreen.unity
     guid: 262eb380f42844805a0de71e468053da
   - enabled: 1
+    path: Assets/ProjectScenes/RevampedRoom1.unity
+    guid: eb42e9f554f234ffdb86452e25f09888
+  - enabled: 0
     path: Assets/ProjectScenes/Room1.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1

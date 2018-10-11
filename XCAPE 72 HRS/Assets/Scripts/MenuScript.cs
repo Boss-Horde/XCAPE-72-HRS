@@ -10,4 +10,10 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void Quit()
+    {
+        Debug.Log("QUIT GAME");
+        Application.Quit();
+    }
 }

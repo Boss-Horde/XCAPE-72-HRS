@@ -12,9 +12,9 @@ public class Inventory : MonoBehaviour {
     [SerializeField] private Text pickUpText;
     public RectTransform[] invSlots;
 
-    [Header("Audio (Pick Up Sounds)")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip[] audioClips;
+    //[Header("Audio (Pick Up Sounds)")]
+    //[SerializeField] private AudioSource audioSource;
+    //[SerializeField] private AudioClip[] audioClips;
 
     [Header("Transform's")]
     [SerializeField] Transform dropPos;
@@ -37,7 +37,7 @@ public class Inventory : MonoBehaviour {
 	
 	public void AddItem (string ItemID, GameObject Object)
     {
-        //int amount = Object.GetComponent<CheckCount>().amount;
+        int amount = Object.GetComponent<CheckCount>().amount;
 
 		if (ItemID == TagManager.flashlight) // item 0
         {
@@ -47,24 +47,23 @@ public class Inventory : MonoBehaviour {
         }
         if (ItemID == TagManager.note) // item 1
         {
-           // collectables[1] += amount;
+           collectables[1] += amount;
            // createData(1, amount);
         }
         if (ItemID == TagManager.battery) // item 2
         {
-           // collectables[0] += amount;
+           collectables[0] += amount;
             //createData(2, amount);
         }
 
         if (ItemID == TagManager.key)
         {
             items[3] = true;
-            //createData(3, amount);
-
+            createData(3, amount); 
         }
 
-        //textAnimation(ItemID, amount);
-        textAnimation(ItemID);
+        textAnimation(ItemID, amount);
+        //textAnimation(ItemID);
     }
 
     private void createData (int item, int amount)
@@ -76,16 +75,16 @@ public class Inventory : MonoBehaviour {
         data.amount += amount;
         data.amountText.text = "<color=#128CE3FF>Amount:</color> " + data.amount + "x";
 
-        audioSource.clip = audioClips[item];
-        audioSource.Play();
+        //audioSource.clip = audioClips[item];
+        //audioSource.Play();
     }
 
-    ///private void textAnimation (string ItemID, int amount)
-    private void textAnimation(string ItemID)
+    private void textAnimation (string ItemID, int amount)
+    //private void textAnimation(string ItemID)
     {
-       // pickUpText.text = "Picked up a " + ItemID + " (" + amount + "x)";
+        pickUpText.text = "Picked up a " + ItemID + " (" + amount + "x)";
 
-        pickUpText.text = "Picked up a " + ItemID;
+        //pickUpText.text = "Picked up a " + ItemID;
         pickUpText.gameObject.GetComponent<Animation>().Stop();
         pickUpText.gameObject.GetComponent<Animation>().Play();
 

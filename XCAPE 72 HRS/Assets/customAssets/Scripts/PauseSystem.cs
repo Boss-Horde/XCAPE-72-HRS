@@ -25,8 +25,6 @@ public class PauseSystem : MonoBehaviour
     {
 		if(Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
-            //if (GameManager.gameManager.inGameFunction) return;
-
 
             PauseGame();
         }
@@ -39,12 +37,6 @@ public class PauseSystem : MonoBehaviour
     public void PauseGame ()
     {
         isPaused = true;
-        //GameManager.gameManager.inGameFunction = true;
-
-        //GameManager.gameManager.UnlockCursor();
-        //GameManager.gameManager.EnableBlurEffect();
-        //GameManager.gameManager.UpdateMotion(0);
-        //GameManager.gameManager.DisableControls();
 
         firstPersonController.enabled = false;
 
@@ -58,13 +50,6 @@ public class PauseSystem : MonoBehaviour
     {
         isPaused = false;
         firstPersonController.enabled = true;
-
-        //GameManager.gameManager.inGameFunction = false;
-
-        //GameManager.gameManager.LockCursor();
-        //GameManager.gameManager.DisableBlurEffect();
-        //GameManager.gameManager.UpdateMotion(1);
-        //GameManager.gameManager.EnableControls();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

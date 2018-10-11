@@ -8,7 +8,7 @@ public class PauseMenuButtons : MonoBehaviour {
 
     private int index = 0;
 
-    [SerializeField] private GameObject settingsHolder;
+    //[SerializeField] private GameObject settingsHolder;
 	[SerializeField] private GameObject pauseMenuHolder;
 
 	public void ResumeGame ()
@@ -18,21 +18,22 @@ public class PauseMenuButtons : MonoBehaviour {
 
     public void Settings ()
     {
-        settingsHolder.SetActive(true);
-        pauseMenuHolder.SetActive(false);
+        Debug.Log("Settings");
+  //      settingsHolder.SetActive(true);
+  //      pauseMenuHolder.SetActive(false);
     }
 
-    public void SettingsBack()
-    {
-        settingsHolder.SetActive(false);
-        pauseMenuHolder.SetActive(true);
-    }
+    //public void SettingsBack()
+    //{
+    //    settingsHolder.SetActive(false);
+    //    pauseMenuHolder.SetActive(true);
+    //}
 
-    public void SettingsApply ()
-    {
-        settingsHolder.SetActive(false);
-        pauseMenuHolder.SetActive(true);
-    }
+    //public void SettingsApply ()
+    //{
+    //    settingsHolder.SetActive(false);
+    //    pauseMenuHolder.SetActive(true);
+    //}
 
     public void MainMenu ()
     {

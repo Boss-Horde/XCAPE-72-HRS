@@ -37,26 +37,26 @@ public class Inventory : MonoBehaviour {
 	
 	public void AddItem (string ItemID, GameObject Object)
     {
-        int amount = Object.GetComponent<CheckCount>().amount;
+        //int amount = Object.GetComponent<CheckCount>().amount;
 
 		if (ItemID == TagManager.flashlight) // item 0
         {
             items[0] = true;
-            flashlightScript.CheckStartup();
-            createData(0, amount);
+            //flashlightScript.CheckStartup();
+            //createData(0, amount);
         }
         if (ItemID == TagManager.note) // item 1
         {
-            collectables[1] += amount;
-            createData(1, amount);
+            //collectables[1] += amount;
+            //createData(1, amount);
         }
         if (ItemID == TagManager.battery) // item 2
         {
-            collectables[0] += amount;
-            createData(2, amount);
+            //collectables[0] += amount;
+            //createData(2, amount);
         }  
 
-        textAnimation(ItemID, amount);
+        //textAnimation(ItemID, amount);
     }
 
     private void createData (int item, int amount)

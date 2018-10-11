@@ -7,6 +7,6 @@ public class TagManager : MonoBehaviour
     public const string battery = "Battery";
     public const string flashlight = "Flashlight";
     public const string note = "Note";
-
+    public const string key = "Key";
     //...
 }

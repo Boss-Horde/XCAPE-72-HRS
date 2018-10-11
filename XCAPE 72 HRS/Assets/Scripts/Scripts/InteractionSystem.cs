@@ -6,7 +6,7 @@ public class InteractionSystem : MonoBehaviour {
 
     //For raycast
     [SerializeField] private Camera mainCam;
-    [SerializeField] private float interactDistance = 5.0f;
+    [SerializeField] private float interactDistance = 1.0f;
     [SerializeField] private Transform rayPos;
 
     private bool canInteract;
@@ -72,6 +72,8 @@ public class InteractionSystem : MonoBehaviour {
             canInteract = false;
             resetData();
         }
+
+        Debug.Log("Searching....");
     }
 
     void resetData ()

@@ -47,16 +47,17 @@ public class Inventory : MonoBehaviour {
         }
         if (ItemID == TagManager.note) // item 1
         {
-            //collectables[1] += amount;
-            //createData(1, amount);
+           // collectables[1] += amount;
+           // createData(1, amount);
         }
         if (ItemID == TagManager.battery) // item 2
         {
-            //collectables[0] += amount;
+           // collectables[0] += amount;
             //createData(2, amount);
-        }  
+        }
 
         //textAnimation(ItemID, amount);
+        textAnimation(ItemID);
     }
 
     private void createData (int item, int amount)
@@ -72,10 +73,12 @@ public class Inventory : MonoBehaviour {
         audioSource.Play();
     }
 
-    private void textAnimation (string ItemID, int amount)
+    ///private void textAnimation (string ItemID, int amount)
+    private void textAnimation(string ItemID)
     {
-        pickUpText.text = "Picked up a " + ItemID + " (" + amount + "x)";
+       // pickUpText.text = "Picked up a " + ItemID + " (" + amount + "x)";
 
+        pickUpText.text = "Picked up a " + ItemID;
         pickUpText.gameObject.GetComponent<Animation>().Stop();
         pickUpText.gameObject.GetComponent<Animation>().Play();
 

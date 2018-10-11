@@ -5,7 +5,7 @@ public class Inventory : MonoBehaviour {
 
     public static Inventory inventory;
 
-    public bool[] items = { false, false };
+    public bool[] items = { false, false, false, false };
     public int[] collectables = {0, 0};
     public int amountOfItems; //Amount of items currently inside the invetory.
 
@@ -54,6 +54,13 @@ public class Inventory : MonoBehaviour {
         {
            // collectables[0] += amount;
             //createData(2, amount);
+        }
+
+        if (ItemID == TagManager.key)
+        {
+            items[3] = true;
+            //createData(3, amount);
+
         }
 
         //textAnimation(ItemID, amount);

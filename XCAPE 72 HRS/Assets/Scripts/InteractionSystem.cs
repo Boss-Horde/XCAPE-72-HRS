@@ -48,6 +48,13 @@ public class InteractionSystem : MonoBehaviour {
                 clearData();
                 return;
             }
+            if (interactingObjectName == TagManager.key)
+            {
+                Inventory.inventory.AddItem(interactingObjectName, interactingGameObject);
+
+                clearData();
+                return;
+            }
         }
 	}
 
@@ -73,7 +80,7 @@ public class InteractionSystem : MonoBehaviour {
             resetData();
         }
 
-        Debug.Log("Searching....");
+        //Debug.Log("Searching....");
     }
 
     void resetData ()

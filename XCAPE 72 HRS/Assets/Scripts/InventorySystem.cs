@@ -40,15 +40,14 @@ public class InventorySystem : MonoBehaviour {
     {
         usingInv = true;
         GameManager.gameManager.inGameFunction = true;
-
+        GameManager.gameManager.DisableControls();
+        GameManager.gameManager.UnlockCursor();
+        GameManager.gameManager.UpdateMotion(time);
         invHolder.SetActive(true);
 
         CheckItemsCount();
 
-        GameManager.gameManager.UnlockCursor();
-        GameManager.gameManager.EnableBlurEffect();
-        GameManager.gameManager.UpdateMotion(time);
-        GameManager.gameManager.DisableControls();
+
     }
 
     public void HideInv (int time)
@@ -59,7 +58,6 @@ public class InventorySystem : MonoBehaviour {
         invHolder.SetActive(false);
 
         GameManager.gameManager.LockCursor();
-        GameManager.gameManager.DisableBlurEffect();
         GameManager.gameManager.UpdateMotion(time);
         GameManager.gameManager.EnableControls();
     }

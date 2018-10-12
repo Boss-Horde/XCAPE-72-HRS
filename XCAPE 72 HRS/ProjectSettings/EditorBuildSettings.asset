@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ProjectScenes/RevampedRoom1.unity
     guid: eb42e9f554f234ffdb86452e25f09888
-  - enabled: 0
-    path: Assets/ProjectScenes/Room1.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/ProjectScenes/Room2.unity
     guid: c80a0678549af489e89a4570830c0654

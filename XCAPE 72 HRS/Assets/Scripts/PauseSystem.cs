@@ -13,7 +13,7 @@ public class PauseSystem : MonoBehaviour
 
 
     [SerializeField] private GameObject pauseMenuHolder;
-    [SerializeField] private GameObject settingsHolder;
+    [SerializeField] private GameObject helpMenu;
 
 	void Start ()
     {
@@ -55,7 +55,7 @@ public class PauseSystem : MonoBehaviour
         Cursor.visible = false;
 
         pauseMenuHolder.SetActive(false);
-        //settingsHolder.SetActive(false);
+        helpMenu.SetActive(false);
     }
     
     

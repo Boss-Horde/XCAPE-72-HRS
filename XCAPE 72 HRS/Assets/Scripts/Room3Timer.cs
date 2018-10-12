@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerScript : MonoBehaviour {
+public class Room3Timer : MonoBehaviour
+{
 
-    public int timeLeft = 5;
+    public int timeLeft = 4;
     public Text countDownText;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         StartCoroutine("LoseTime");
-	}
+    }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         countDownText.text = ("Time Left = " + timeLeft);
 
         if (timeLeft <= 0)
@@ -24,7 +27,8 @@ public class TimerScript : MonoBehaviour {
         }
     }
 
-    IEnumerator LoseTime() {
+    IEnumerator LoseTime()
+    {
         while (true)
         {
             yield return new WaitForSeconds(1);

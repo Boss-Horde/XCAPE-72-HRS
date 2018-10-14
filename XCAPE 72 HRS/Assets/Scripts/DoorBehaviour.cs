@@ -31,8 +31,14 @@ public class DoorBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (playerNextToDoor && Input.GetKeyDown(KeyCode.E)) {          // If player does have key, need add condition
-            audioSource.PlayOneShot(openDoorSound, Volume);
-            StartCoroutine(LoadNextLevel());
+            if (Inventory.inventory.items.GetValue(3).Equals(true)){
+                audioSource.PlayOneShot(openDoorSound, Volume);
+                StartCoroutine(LoadNextLevel());
+            } 
+            else 
+            {
+                audioSource.PlayOneShot(doorLockedSound, Volume);
+            }
         }
         /*
         else if (playerNextToDoor && Input.GetKeyDown(KeyCode.E)) {     // If player doesn't have key, need add condition

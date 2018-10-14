@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour {
 
-	[SerializeField] private GameObject         invHolder       = null;
-    [SerializeField] private bool               usingInv        = false;
-    [SerializeField] private GameObject         NoData          = null;
+	[SerializeField] GameObject         invHolder       = null;
+    [SerializeField] bool               usingInv        = false;
+    [SerializeField] GameObject         NoData          = null;
 
     public static InventorySystem               invSystem;
     private Inventory                           inv;

@@ -13,7 +13,7 @@ public class PauseMenuButtons : MonoBehaviour {
 
 	public void ResumeGame ()
     {
-        PauseSystem.pauseSystem.ResumeGame();
+        PauseSystem.pauseSystem.ResumeGame(1);
 	}
 
     public void Settings ()

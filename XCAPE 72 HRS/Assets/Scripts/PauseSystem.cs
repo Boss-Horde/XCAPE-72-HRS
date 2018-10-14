@@ -27,17 +27,18 @@ public class PauseSystem : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
 
-            PauseGame();
+            PauseGame(0);
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
         {
-            ResumeGame();
+            ResumeGame(1);
         }
     }
 
-    public void PauseGame ()
+    public void PauseGame (int time)
     {
         isPaused = true;
+        GameManager.gameManager.UpdateMotion(time);
 
         firstPersonController.enabled = false;
 
@@ -47,10 +48,12 @@ public class PauseSystem : MonoBehaviour
         pauseMenuHolder.SetActive(true);
     }
      
-    public void ResumeGame()
+    public void ResumeGame(int time)
     {
         isPaused = false;
         firstPersonController.enabled = true;
+        GameManager.gameManager.UpdateMotion(time);
+
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

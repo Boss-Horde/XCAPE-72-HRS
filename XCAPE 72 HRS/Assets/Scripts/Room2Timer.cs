@@ -6,33 +6,32 @@ using UnityEngine.UI;
 public class Room2Timer : MonoBehaviour
 {
 
-    public int timeLeft = 6;
-    public Text countDownText;
+    public Text timerText;
+    private float time = 600;
 
-    // Use this for initialization
     void Start()
     {
-        StartCoroutine("LoseTime");
+        StartCoundownTimer();
     }
 
-    // Update is called once per frame
-    void Update()
+    void StartCoundownTimer()
     {
-        countDownText.text = ("Time Left = " + timeLeft);
-
-        if (timeLeft <= 0)
+        if (timerText != null)
         {
-            StopCoroutine("LoseTime");
-            countDownText.text = "Times Up!"; // This is where we will insert the death screen when it's done
+            timerText.text = "Time Left: 10:00:000";
+            InvokeRepeating("UpdateTimer", 0.0f, 0.01667f);
         }
     }
 
-    IEnumerator LoseTime()
+    void UpdateTimer()
     {
-        while (true)
+        if (timerText != null)
         {
-            yield return new WaitForSeconds(1);
-            timeLeft--;
+            time -= Time.deltaTime;
+            string minutes = Mathf.Floor(time / 60).ToString("00");
+            string seconds = (time % 60).ToString("00");
+            string fraction = ((time * 100) % 100).ToString("000");
+            timerText.text = "Time Left: " + minutes + ":" + seconds + ":" + fraction;
         }
     }
 }

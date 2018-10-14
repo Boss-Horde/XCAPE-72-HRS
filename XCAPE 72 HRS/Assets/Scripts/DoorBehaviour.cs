@@ -40,11 +40,7 @@ public class DoorBehaviour : MonoBehaviour {
                 audioSource.PlayOneShot(doorLockedSound, Volume);
             }
         }
-        /*
-        else if (playerNextToDoor && Input.GetKeyDown(KeyCode.E)) {     // If player doesn't have key, need add condition
-           audioSource.PlayOneShot(doorLockedSound, Volume);
-        }   
-        */
+        // FOR FUTURE USE: FOR LEVELS AFTER LEVEL ONE, TWEEK CONDITIONS TO INCLUDE DIFFERENT ITEMS OR CONDITIONS TO TRIGGER ANIMATION AND LEVEL LOADING
     }
 
     IEnumerator LoadNextLevel()

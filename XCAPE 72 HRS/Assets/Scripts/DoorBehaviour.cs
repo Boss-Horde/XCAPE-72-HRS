@@ -49,7 +49,7 @@ public class DoorBehaviour : MonoBehaviour {
 
     IEnumerator LoadNextLevel()
     {
-        //animator.SetTrigger("FadeOut");
+        animator.SetTrigger("FadeOut");
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(2);
     }

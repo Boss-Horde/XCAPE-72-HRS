@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
+
 
 public class keypad : MonoBehaviour
 {
+    private RigidbodyFirstPersonController firstPersonController;
 
     public string currentPassword = "3257";
     public string input;
@@ -11,6 +14,12 @@ public class keypad : MonoBehaviour
     public bool onTrigger;
     public bool safeOpened;
     public bool keypadScreen;
+    public GameObject key;
+
+    void Start()
+    {
+        firstPersonController = FindObjectOfType<RigidbodyFirstPersonController>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -39,21 +48,36 @@ public class keypad : MonoBehaviour
 
     private void OnGUI()
     {
-        Cursor.visible = true;
         if (onTrigger)
         {
-            GUI.Box(new Rect(0, 0, 200, 25), "Press 'E to open keypad");
+            GUI.Box(new Rect(0, 0, 200, 25), "Press 'E' to open keypad");
 
             if (Input.GetKeyDown(KeyCode.E))
             {
                 keypadScreen = true;
                 onTrigger = false;
             }
-
         }
 
         if (keypadScreen)
         {
+            firstPersonController.enabled = false;
+            GUI.Box(new Rect(100, 500, 200, 25), "Press 'Q' to close keypad");
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Debug.Log("Q to exit pressed");
+                firstPersonController.enabled = true;
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+
+                keypadScreen = false;
+            }
+
 
             GUI.Box(new Rect(0, 0, 320, 400), "");
             GUI.Box(new Rect(5, 5, 310, 25), input);
@@ -120,5 +144,6 @@ public class keypad : MonoBehaviour
     {
         Animator anim = GetComponentInParent<Animator>();
         anim.SetBool("open", true);
+        key.SetActive(true);
     }
 }

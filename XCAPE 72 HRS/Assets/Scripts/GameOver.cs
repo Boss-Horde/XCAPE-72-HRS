@@ -5,10 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    public void LoadGameOver()
+
+    public void Start()
     {
-        gameObject.SetActive(true);
+        Cursor.visible = true;
     }
+
+    //public void LoadGameOver()
+    //{
+    //    gameObject.SetActive(true);
+    //}
 
     public void RestartGame()
     {

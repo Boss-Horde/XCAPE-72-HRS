@@ -25,7 +25,7 @@ public class Room3Timer : MonoBehaviour
         {
             StopCoroutine("LoseTime");
             countDownText.text = "Times Up!"; // This is where we will insert the death screen when it's done
-            dead.LoadGameOver();
+            //dead.LoadGameOver();
             
         }
     }

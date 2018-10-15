@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ProjectScenes/Room3.unity
     guid: a7be6c88a94a44e1da47c4d5e01928af
+  - enabled: 1
+    path: Assets/ProjectScenes/GameOver.unity
+    guid: 67ec4a01413ea25489d09dfc1a347dc0
   m_configObjects: {}

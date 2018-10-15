@@ -8,6 +8,7 @@ public class Room3Timer : MonoBehaviour
 
     public int timeLeft = 4;
     public Text countDownText;
+    public GameOver dead;
 
     // Use this for initialization
     void Start()
@@ -24,6 +25,8 @@ public class Room3Timer : MonoBehaviour
         {
             StopCoroutine("LoseTime");
             countDownText.text = "Times Up!"; // This is where we will insert the death screen when it's done
+            dead.LoadGameOver();
+            
         }
     }
 

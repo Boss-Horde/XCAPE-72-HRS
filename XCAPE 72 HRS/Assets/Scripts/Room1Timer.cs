@@ -7,6 +7,7 @@ public class Room1Timer : MonoBehaviour {
 
     public Text timerText;
     private float time = 300;
+    public GameOver dead;
 
     void Start()
     {
@@ -27,6 +28,11 @@ public class Room1Timer : MonoBehaviour {
     {
         if (timerText != null)
         {
+            if (time == 0)
+            {
+                CancelInvoke();
+                dead.LoadGameOver();
+            }
             time -= Time.deltaTime;
             string minutes = Mathf.Floor(time / 60).ToString("00");
             string seconds = (time % 60).ToString("00");

@@ -24,7 +24,11 @@ public class SelectLevel : MonoBehaviour
     public void LoadLevel2()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
 
+    public void LoadLevel3()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }
 
     public void Back()

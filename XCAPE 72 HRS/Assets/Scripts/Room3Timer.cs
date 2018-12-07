@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class Room3Timer : MonoBehaviour
 {
 
-    public int timeLeft = 4;
+    private int timeLeft = 900;
     public Text countDownText;
     public GameOver dead;
+
 
     // Use this for initialization
     void Start()

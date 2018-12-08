@@ -15,10 +15,13 @@ public class keypad : MonoBehaviour
     public bool safeOpened;
     public bool keypadScreen;
     public GameObject key;
+    public AudioClip keypadPressSound;
+    public AudioSource audioSource;
 
     void Start()
     {
         firstPersonController = FindObjectOfType<RigidbodyFirstPersonController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -89,51 +92,61 @@ public class keypad : MonoBehaviour
             if (GUI.Button(new Rect(5, 25, 50, 50), "1"))
             {
                 input = input + "1";
+                audioSource.PlayOneShot(keypadPressSound, .5f);
             }
 
             if (GUI.Button(new Rect(110, 25, 50, 50), "2"))
             {
                 input = input + "2";
+                audioSource.PlayOneShot(keypadPressSound, .5f);
             }
 
             if (GUI.Button(new Rect(215, 25, 50, 50), "3"))
             {
                 input = input + "3";
+                audioSource.PlayOneShot(keypadPressSound, .5f);
             }
 
             if (GUI.Button(new Rect(5, 140, 50, 50), "4"))
             {
                 input = input + "4";
+                audioSource.PlayOneShot(keypadPressSound, .5f);
             }
 
             if (GUI.Button(new Rect(110, 140, 50, 50), "5"))
             {
                 input = input + "5";
+                audioSource.PlayOneShot(keypadPressSound, .5f);
             }
 
             if (GUI.Button(new Rect(215, 140, 50, 50), "6"))
             {
                 input = input + "6";
+                audioSource.PlayOneShot(keypadPressSound, .5f);
             }
 
             if (GUI.Button(new Rect(5, 245, 50, 50), "7"))
             {
                 input = input + "7";
+                audioSource.PlayOneShot(keypadPressSound, .5f);
             }
 
             if (GUI.Button(new Rect(110, 245, 50, 50), "8"))
             {
                 input = input + "8";
+                audioSource.PlayOneShot(keypadPressSound, .5f);
             }
 
             if (GUI.Button(new Rect(215, 245, 50, 50), "9"))
             {
                 input = input + "9";
+                audioSource.PlayOneShot(keypadPressSound, .5f);
             }
 
             if (GUI.Button(new Rect(110, 350, 50, 50), "0"))
             {
                 input = input + "0";
+                audioSource.PlayOneShot(keypadPressSound, .5f);
             }
 
 

@@ -12,6 +12,9 @@ public class Inventory : MonoBehaviour {
     [SerializeField] private Text pickUpText;
     public RectTransform[] invSlots;
 
+    public AudioSource audioSource;
+    public AudioClip pickUpSound;
+
     //[Header("Audio (Pick Up Sounds)")]
     //[SerializeField] private AudioSource audioSource;
     //[SerializeField] private AudioClip[] audioClips;
@@ -32,14 +35,16 @@ public class Inventory : MonoBehaviour {
 
     void Start ()
     {
+        audioSource = GetComponent<AudioSource>();
         flashlightScript = useFlashlight.instance;
     }
 	
 	public void AddItem (string ItemID, GameObject Object)
     {
         int amount = Object.GetComponent<CheckCount>().amount;
+        audioSource.PlayOneShot(pickUpSound, .7f);
 
-		if (ItemID == TagManager.flashlight) // item 0
+        if (ItemID == TagManager.flashlight) // item 0
         {
             items[0] = true;
             //flashlightScript.CheckStartup();

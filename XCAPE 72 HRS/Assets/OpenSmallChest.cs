@@ -103,9 +103,14 @@ public class OpenSmallChest : MonoBehaviour
             string answer = guess.ToLower();
             if (answer.Equals("men"))
             {
+                firstPersonController.enabled = true;
                 openedChest = true;
-                PlayChestAnimation();
+            
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                solvingRiddle = false;
                 riddlePanel.SetActive(false);
+                PlayChestAnimation();
             }
             else
             {
@@ -125,9 +130,14 @@ public class OpenSmallChest : MonoBehaviour
             string answer = guess2.ToLower();
             if (answer.Equals("n"))
             {
+                firstPersonController.enabled = true;
                 openedChest = true;
-                PlayChestAnimation();
+            
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                solvingRiddle = false;
                 riddlePanel.SetActive(false);
+                PlayChestAnimation();
             }
             else
             {
@@ -142,6 +152,12 @@ public class OpenSmallChest : MonoBehaviour
     {
         Animator anim = gameObject.GetComponent<Animator>();
         anim.SetTrigger("Unlock");
+        StartCoroutine(DelayOpenChestSound());
+    }
+
+    IEnumerator DelayOpenChestSound()
+    {
+        yield return new WaitForSeconds(.4f);
         audioSource.PlayOneShot(openChestSound, .7f);
     }
 }

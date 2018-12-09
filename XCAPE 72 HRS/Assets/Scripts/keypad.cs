@@ -65,7 +65,7 @@ public class keypad : MonoBehaviour
         if (keypadScreen)
         {
             firstPersonController.enabled = false;
-            GUI.Box(new Rect(100, 500, 200, 25), "Press 'Q' to close keypad");
+            GUI.Box(new Rect(50, 400, 200, 25), "Press 'Q' to close keypad");
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

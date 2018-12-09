@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class doorKeyPad : MonoBehaviour {
     GameObject firstPersonController;
@@ -8,6 +9,7 @@ public class doorKeyPad : MonoBehaviour {
     private string input = "";
     private bool onTrigger;
     private bool keypadScreen;
+    public int level;
 
 
     private void Update()
@@ -17,7 +19,11 @@ public class doorKeyPad : MonoBehaviour {
             Debug.Log("Password match!");
             keypadScreen = false;
             gameObject.GetComponent<BoxCollider>().enabled = false;
+            if(level == 3) {
+                SceneManager.LoadScene("Winner");
+            }
         }
+        
     }
     private void OnTriggerEnter(Collider other)
     {

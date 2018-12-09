@@ -13,10 +13,13 @@ public class OpenSmallChest : MonoBehaviour
     bool openedChest = false;
     bool solvingRiddle = false;
     InputField input;
+    public AudioSource audioSource;
+    public AudioClip openChestSound;
 
     private void Start()
     {
         firstPersonController = FindObjectOfType<RigidbodyFirstPersonController>();
+        audioSource = GetComponent<AudioSource>();
         //riddlePanel.SetActive(false);
     }
 
@@ -139,5 +142,6 @@ public class OpenSmallChest : MonoBehaviour
     {
         Animator anim = gameObject.GetComponent<Animator>();
         anim.SetTrigger("Unlock");
+        audioSource.PlayOneShot(openChestSound, .7f);
     }
 }

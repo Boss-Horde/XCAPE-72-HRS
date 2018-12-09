@@ -14,9 +14,11 @@ public class keypad : MonoBehaviour
     public bool onTrigger;
     public bool safeOpened;
     public bool keypadScreen;
+    public bool globalBoxIsOpen = false;
     public GameObject key;
-    public AudioClip keypadPressSound;
     public AudioSource audioSource;
+    public AudioClip keypadPressSound;
+    public AudioClip openSafeSound;
 
     void Start()
     {
@@ -26,8 +28,8 @@ public class keypad : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        onTrigger = true;
-
+        if(globalBoxIsOpen == false)
+            onTrigger = true;
     }
 
     private void OnTriggerExit(Collider other)
@@ -148,8 +150,6 @@ public class keypad : MonoBehaviour
                 input = input + "0";
                 audioSource.PlayOneShot(keypadPressSound, .5f);
             }
-
-
         }
     }
 
@@ -158,5 +158,16 @@ public class keypad : MonoBehaviour
         Animator anim = GetComponentInParent<Animator>();
         anim.SetBool("open", true);
         key.SetActive(true);
+        audioSource.PlayOneShot(openSafeSound, .7f);
+        safeOpened = false;
+
+        firstPersonController.enabled = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        keypadScreen = false;
+        input = "";
+        globalBoxIsOpen = true;
     }
 }

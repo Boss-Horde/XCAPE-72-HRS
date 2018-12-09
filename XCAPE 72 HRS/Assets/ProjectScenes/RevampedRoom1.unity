@@ -2022,9 +2022,11 @@ MonoBehaviour:
   onTrigger: 0
   safeOpened: 0
   keypadScreen: 0
+  globalBoxIsOpen: 0
   key: {fileID: 927882971}
-  keypadPressSound: {fileID: 8300000, guid: 3e1605f47d1a73846aa1d73b52ee376f, type: 3}
   audioSource: {fileID: 0}
+  keypadPressSound: {fileID: 8300000, guid: 3e1605f47d1a73846aa1d73b52ee376f, type: 3}
+  openSafeSound: {fileID: 8300000, guid: 38d63da165e32454594c96860b022fcb, type: 3}
 --- !u!65 &1179635653
 BoxCollider:
   m_ObjectHideFlags: 0

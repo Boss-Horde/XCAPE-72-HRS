@@ -7,11 +7,18 @@ public class Flashlight : MonoBehaviour {
     GameObject player;
     Light light;
     bool pickedUp = false;
+    Vector3 flashlight;
 
     private void Start()
     {
         light = GetComponentInChildren<Light>();
         light.enabled = false;
+        flashlight = transform.position;
+    }
+
+    public void Update()
+    {
+        flashlight.y = 1;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,10 +58,16 @@ public class Flashlight : MonoBehaviour {
     void PickUpFlashlight()
     {
         pickedUp = true;
-        gameObject.GetComponent<SphereCollider>().enabled = false; 
-        gameObject.transform.position = player.transform.position;
-        gameObject.transform.rotation = Quaternion.LookRotation(-player.transform.forward, Vector3.up);
-        gameObject.transform.parent = player.transform;
-        light.enabled = true;
+        //gameObject.GetComponent<SphereCollider>().enabled = false; 
+
+        //gameObject.transform.position = player.transform.position;
+        //gameObject.transform.position = flashlight;
+        //gameObject.transform.rotation = Quaternion.LookRotation(-player.transform.forward, player.transform.up);
+        //gameObject.transform.parent = player.transform;
+        //light.enabled = true;
+
+        player.GetComponentInChildren<Light>().enabled = true;
+
+        Destroy(gameObject);
     }
 }

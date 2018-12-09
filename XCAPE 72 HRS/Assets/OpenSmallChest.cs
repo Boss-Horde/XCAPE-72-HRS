@@ -17,7 +17,7 @@ public class OpenSmallChest : MonoBehaviour
     private void Start()
     {
         firstPersonController = FindObjectOfType<RigidbodyFirstPersonController>();
-        riddlePanel.SetActive(false);
+        //riddlePanel.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -79,7 +79,7 @@ public class OpenSmallChest : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Tab))
             {
-                Debug.Log("1 exit pressed");
+                Debug.Log(" exit pressed");
                 firstPersonController.enabled = true;
 
                 Cursor.lockState = CursorLockMode.Locked;
@@ -93,11 +93,11 @@ public class OpenSmallChest : MonoBehaviour
     }
 
 
-    public void CheckInputString()
+    public void CheckInputString(string guess)
     {
         if (input != null)
         {
-            string answer = input.text.ToLower();
+            string answer = guess.ToLower();
             if (answer.Equals("men"))
             {
                 openedChest = true;
@@ -115,11 +115,11 @@ public class OpenSmallChest : MonoBehaviour
             return;
     }
 
-    public void CheckInputSecond()
+    public void CheckInputSecond(string guess2)
     {
         if (input != null)
         {
-            string answer = input.text.ToLower();
+            string answer = guess2.ToLower();
             if (answer.Equals("n"))
             {
                 openedChest = true;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13559267, g: 0.14969161, b: 0.16211069, a: 1}
+  m_IndirectSpecularColor: {r: 0.1357679, g: 0.1496805, b: 0.16221637, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -747,6 +747,11 @@ Prefab:
       value: 
       objectReference: {fileID: 12800000, guid: 88ad8c7f5096a49179341870bd72c31f,
         type: 3}
+    - target: {fileID: 114523085760731758, guid: 7ddc4499082634ea8b418ea1e1ab7720,
+        type: 2}
+      propertyPath: amount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114611592810998718, guid: 7ddc4499082634ea8b418ea1e1ab7720, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 7ddc4499082634ea8b418ea1e1ab7720, type: 2}
@@ -1752,7 +1757,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 414096633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c55e6fa102b28b545ae4b0a281851935, type: 3}
+  m_Script: {fileID: 11500000, guid: 52622a400825f4d6198a48457ad78f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1202967077}
@@ -3547,6 +3552,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   openChestSound: {fileID: 8300000, guid: 23e5b13100dc70340ba52d1b0175124d, type: 3}
   key: {fileID: 772818470}
+  gameManager: {fileID: 0}
 --- !u!65 &968066676
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4566,6 +4572,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   openChestSound: {fileID: 8300000, guid: 23e5b13100dc70340ba52d1b0175124d, type: 3}
   key: {fileID: 983423134}
+  gameManager: {fileID: 0}
 --- !u!82 &1261314928
 AudioSource:
   m_ObjectHideFlags: 0

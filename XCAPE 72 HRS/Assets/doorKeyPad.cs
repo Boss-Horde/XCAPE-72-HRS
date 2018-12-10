@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class doorKeyPad : MonoBehaviour {
-    GameObject firstPersonController;
+    private RigidbodyFirstPersonController firstPersonController;
     public string currentPassword = "68";
     private string input = "";
     private bool onTrigger;
@@ -12,6 +13,10 @@ public class doorKeyPad : MonoBehaviour {
     public int level;
     bool needKeys;
 
+    private void Start()
+    {
+        firstPersonController = FindObjectOfType<RigidbodyFirstPersonController>();
+    }
 
     private void Update()
     {
@@ -32,7 +37,7 @@ public class doorKeyPad : MonoBehaviour {
         {
             if (Inventory.inventory.lastLevelKeyCount == 2)
             {
-                firstPersonController = other.gameObject;
+                //firstPersonController = other.gameObject;
                 needKeys = false;
                 onTrigger = true;
             } else
@@ -71,11 +76,9 @@ public class doorKeyPad : MonoBehaviour {
 
         if (keypadScreen)
         {
-            //firstPersonController.GetComponent<Rigidbody>().enabled = false;
-            //firstPersonController.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-            //firstPersonController.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            firstPersonController.enabled = false;
 
-            GUI.Box(new Rect(100, 500, 200, 25), "Press 'Q' to close keypad");
+            GUI.Box(new Rect(50, 400, 200, 25), "Press 'Q' to close keypad");
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -83,7 +86,7 @@ public class doorKeyPad : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 Debug.Log("Q to exit pressed");
-                //firstPersonController.enabled = true;
+                firstPersonController.enabled = true;
                 //firstPersonController.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;

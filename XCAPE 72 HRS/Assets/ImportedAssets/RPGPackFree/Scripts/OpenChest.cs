@@ -16,10 +16,13 @@ public class OpenChest : MonoBehaviour {
     public AudioSource audioSource;
     public AudioClip openChestSound;
     public GameObject key;
+    public GameObject gameManager;
 
     private void Start()
     {
         firstPersonController = FindObjectOfType<RigidbodyFirstPersonController>();
+        gameManager = GameObject.Find("GameManager");
+
         audioSource = GetComponent<AudioSource>();
         riddlePanel.SetActive(false);
     }
@@ -111,6 +114,7 @@ public class OpenChest : MonoBehaviour {
             {
                 solvingRiddle = true;
                 onTrigger = false;
+                gameManager.GetComponent<InventorySystem>().enabled = false;
             }
         }
 
@@ -194,6 +198,7 @@ public class OpenChest : MonoBehaviour {
         solvingRiddle = false;
 
         riddlePanel.SetActive(false);
+        gameManager.GetComponent<InventorySystem>().enabled = true;
     }
 
     IEnumerator DelayOpenChestSound()

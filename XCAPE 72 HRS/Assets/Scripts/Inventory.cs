@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour {
     public bool[] items = { false, false, false, false };
     public int[] collectables = {0, 0};
     public int amountOfItems; //Amount of items currently inside the invetory.
+    public int lastLevelKeyCount = 0; //used for the door on the last level
 
     [SerializeField] private Text pickUpText;
     public RectTransform[] invSlots;
@@ -63,6 +64,7 @@ public class Inventory : MonoBehaviour {
 
         if (ItemID == TagManager.key)
         {
+            lastLevelKeyCount += amount;
             items[3] = true;
             createData(3, amount); 
         }

@@ -15,6 +15,7 @@ public class OpenChest : MonoBehaviour {
     InputField input;
     public AudioSource audioSource;
     public AudioClip openChestSound;
+    public GameObject key;
 
     private void Start()
     {
@@ -175,11 +176,12 @@ public class OpenChest : MonoBehaviour {
 
     void PlayChestAnimation()
     {
-        ExitPanel();
+        key.SetActive(true);
         Destroy(gameObject.GetComponent<BoxCollider>());
         Animator anim = gameObject.GetComponent<Animator>();
         anim.SetTrigger("Unlock");
         StartCoroutine(DelayOpenChestSound());
+        ExitPanel();
     }
 
     void ExitPanel()

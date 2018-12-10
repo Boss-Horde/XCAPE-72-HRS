@@ -15,6 +15,7 @@ public class OpenSmallChest : MonoBehaviour
     InputField input;
     public AudioSource audioSource;
     public AudioClip openChestSound;
+    public GameObject key;
 
     private void Start()
     {
@@ -34,23 +35,10 @@ public class OpenSmallChest : MonoBehaviour
                 onTrigger = true;
             }
         }
-
-        ////Cursor.visible = !Cursor.visible;
-        //if (other.CompareTag("Player"))
-        //{
-        //    onTrigger = true;
-        //    riddlePanel.SetActive(true);
-        //    input = riddlePanel.GetComponentInChildren<InputField>();
-        //    input.ActivateInputField();
-        //    input.Select();
-        //}
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //if (other.CompareTag("Player"))
-        //{
-        //}
         onTrigger = false;
     }
 
@@ -83,14 +71,7 @@ public class OpenSmallChest : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 Debug.Log(" exit pressed");
-                firstPersonController.enabled = true;
-
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-
-                solvingRiddle = false;
-
-                riddlePanel.SetActive(false);
+                ExitPanel();
             }
         }
     }
@@ -150,9 +131,24 @@ public class OpenSmallChest : MonoBehaviour
 
     void PlayChestAnimation()
     {
+        key.SetActive(true);
+        ExitPanel();
+        Destroy(gameObject.GetComponent<BoxCollider>());
         Animator anim = gameObject.GetComponent<Animator>();
         anim.SetTrigger("Unlock");
         StartCoroutine(DelayOpenChestSound());
+    }
+
+    void ExitPanel()
+    {
+        firstPersonController.enabled = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        solvingRiddle = false;
+
+        riddlePanel.SetActive(false);
     }
 
     IEnumerator DelayOpenChestSound()

@@ -10,6 +10,7 @@ public class doorKeyPad : MonoBehaviour {
     private bool onTrigger;
     private bool keypadScreen;
     public int level;
+    bool needKeys;
 
 
     private void Update()
@@ -29,8 +30,15 @@ public class doorKeyPad : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            firstPersonController = other.gameObject;
-            onTrigger = true;
+            if (Inventory.inventory.lastLevelKeyCount == 2)
+            {
+                firstPersonController = other.gameObject;
+                needKeys = false;
+                onTrigger = true;
+            } else
+            {
+                needKeys = true;
+            }
         }
     }
 
@@ -38,6 +46,7 @@ public class doorKeyPad : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            needKeys = false;
             onTrigger = false;
             keypadScreen = false;
             input = "";
@@ -45,9 +54,13 @@ public class doorKeyPad : MonoBehaviour {
     }
     private void OnGUI()
     {
+        if (needKeys)
+        {
+            GUI.Box(new Rect((Screen.width - 210) / 2, (Screen.height - 25) / 2, 210, 25), "Two keys needed to unlock keypad");
+        }
         if (onTrigger)
         {
-            GUI.Box(new Rect(0, 0, 200, 25), "Press 'E' to open keypad");
+            GUI.Box(new Rect((Screen.width - 200)/2, (Screen.height-25)/2, 200, 25), "Press 'E' to open keypad");
 
             if (Input.GetKeyDown(KeyCode.E))
             {

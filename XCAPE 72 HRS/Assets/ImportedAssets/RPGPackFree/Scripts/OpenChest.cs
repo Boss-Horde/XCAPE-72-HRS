@@ -1,18 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class OpenChest : MonoBehaviour {
 
+    private RigidbodyFirstPersonController firstPersonController;
     public GameObject riddlePanel;
     bool onTrigger = false;
     bool openedChest = false;
+    bool solvingRiddle = false;
     string CHAIR_ANSWER = "chair";
     int FRIDGE_ANSWER = 110;
     InputField input;
+    public AudioSource audioSource;
+    public AudioClip openChestSound;
 
     private void Start()
     {
+        firstPersonController = FindObjectOfType<RigidbodyFirstPersonController>();
+        audioSource = GetComponent<AudioSource>();
         riddlePanel.SetActive(false);
     }
 
@@ -78,14 +85,9 @@ public class OpenChest : MonoBehaviour {
     {
         if (!openedChest)
         {
-            
-            Cursor.visible = !Cursor.visible;
             if (other.CompareTag("Player"))
             {
                 onTrigger = true;
-                riddlePanel.SetActive(true);
-                input = riddlePanel.GetComponentInChildren<InputField>();
-                input.Select();
             }
         }
     }
@@ -96,6 +98,39 @@ public class OpenChest : MonoBehaviour {
         {
 
             riddlePanel.SetActive(false);
+        }
+    }
+
+    private void OnGUI()
+    {
+        if (onTrigger)
+        {
+            GUI.Box(new Rect(0, 0, 200, 25), "Press 'E' to open chest");
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                solvingRiddle = true;
+                onTrigger = false;
+            }
+        }
+
+        if (solvingRiddle)
+        {
+            riddlePanel.SetActive(true);
+            input = riddlePanel.GetComponentInChildren<InputField>();
+            input.ActivateInputField();
+            input.Select();
+
+            firstPersonController.enabled = false;
+            GUI.Box(new Rect(50, 400, 200, 25), "Press 'Tab' to give up solving");
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                Debug.Log(" exit pressed");
+                ExitPanel();
+            }
         }
     }
 
@@ -140,8 +175,29 @@ public class OpenChest : MonoBehaviour {
 
     void PlayChestAnimation()
     {
+        ExitPanel();
+        Destroy(gameObject.GetComponent<BoxCollider>());
         Animator anim = gameObject.GetComponent<Animator>();
         anim.SetTrigger("Unlock");
+        StartCoroutine(DelayOpenChestSound());
+    }
+
+    void ExitPanel()
+    {
+        firstPersonController.enabled = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        solvingRiddle = false;
+
+        riddlePanel.SetActive(false);
+    }
+
+    IEnumerator DelayOpenChestSound()
+    {
+        yield return new WaitForSeconds(.4f);
+        audioSource.PlayOneShot(openChestSound, .7f);
     }
 
 }
